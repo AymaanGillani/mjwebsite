@@ -12,6 +12,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
+    String hello;
     Size size = mediaQueryData.size;
     Color primaryThemeColor = Colors.blue;
     bool _searchToggle = false;
