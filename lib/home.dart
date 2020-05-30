@@ -12,9 +12,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
-    String hello;
     Size size = mediaQueryData.size;
-    Color primaryThemeColor = Colors.blue;
+    Color primaryThemeColor = Colors.white;
     bool _searchToggle = false;
     return Scaffold(
       body: Column(
@@ -33,6 +32,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset('assets/logo.png'),
                 Spacer(),
