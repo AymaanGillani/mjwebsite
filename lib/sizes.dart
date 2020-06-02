@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-double sizeOfAppbar(Size size){
-  return size.height*13/100;
-}
-
-EdgeInsetsGeometry appBarButtonPadding(Size size){
-  return EdgeInsets.symmetric(vertical: sizeOfAppbar(size)/3,horizontal: sizeOfAppbar(size)/10);
-}
-
-Size searchBoxSize(Size size){
-  return Size(size.width/10,sizeOfAppbar(size)/2);
+EdgeInsetsGeometry appBarButtonPadding(Size size) {
+  if (size.width > 1200) {
+    return EdgeInsets.symmetric(vertical: 41, horizontal: size.width / 150);
+  }else{
+    return EdgeInsets.symmetric(vertical: 21, horizontal: size.width / 150);
+  }
 }
