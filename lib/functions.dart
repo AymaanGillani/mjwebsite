@@ -19,7 +19,6 @@ FlatButton appBarButton(Size size, Function function, String name) {
 }
 
 FlatButton appBarButton2(Size size, Function function, String name) {
-  double appBarFontSize = (size.width - 100.0) / 75;
   return FlatButton(
     child: Text(
       name,
@@ -31,4 +30,5 @@ FlatButton appBarButton2(Size size, Function function, String name) {
     onPressed: function,
   );
 }
+
 

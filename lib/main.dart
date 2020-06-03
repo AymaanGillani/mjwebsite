@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mj_college/home.dart';
+import 'package:mj_college/CustomDrawer/CustomDrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Muffakham Jah College of Engineering and Technology',
-      home: Home(),
+      home: CustomDrawer(),
     );
   }
 }
