@@ -26,11 +26,12 @@ class _CustomDrawerState extends State<CustomDrawer>
 
   @override
   Widget build(BuildContext context) {
+    toggleDrawer();
     return AnimatedBuilder(
       animation: animationController,
       builder: (context, _) {
         double scalex=1-(animationController.value*0.2);
-        double scaley=1-(animationController.value*0.1);
+        double scaley=1-(animationController.value*0.2);
         return Stack(
           children: [
             MyDrawer(),

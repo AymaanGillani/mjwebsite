@@ -9,7 +9,7 @@ class MobileNavBar extends StatelessWidget {
     Size size = mediaQueryData.size;
     return Container(
       width: size.width,
-      height: 100,
+      height: 70,
       decoration: BoxDecoration(
         color: appBarBackgroundColor,
         boxShadow: [
