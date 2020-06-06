@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mj_college/AlwaysScrollBar.dart';
 import 'package:mj_college/functions.dart';
 
 class DesktopHorDrawer extends StatelessWidget {
@@ -38,8 +39,9 @@ class DeskTabVertDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return SingleChildScrollViewWithScrollbar(
+      scrollbarColor: Colors.white10,
+          child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(
