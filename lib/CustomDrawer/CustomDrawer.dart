@@ -16,7 +16,7 @@ class _CustomDrawerState extends State<CustomDrawer>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 250),
+      duration: Duration(milliseconds: 500),
     );
   }
 
@@ -26,7 +26,6 @@ class _CustomDrawerState extends State<CustomDrawer>
 
   @override
   Widget build(BuildContext context) {
-    toggleDrawer();
     return AnimatedBuilder(
       animation: animationController,
       builder: (context, _) {
