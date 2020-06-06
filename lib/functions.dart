@@ -24,11 +24,45 @@ FlatButton appBarButton2(Size size, Function function, String name) {
       name,
       style: GoogleFonts.getFont(
         'Roboto',
-        textStyle: appbarButtonText/*.copyWith(fontSize: appBarFontSize)*/,
+        textStyle: appbarButtonText /*.copyWith(fontSize: appBarFontSize)*/,
       ),
     ),
     onPressed: function,
   );
 }
 
+FlatButton drawerButton(Size size, Function function, String name) {
+  bool highlighted = false;
+  Color normalText = Colors.white;
+  Color higlightedText = Colors.blue;
+  return FlatButton(
+    hoverColor: Colors.blue[300],
+    textColor: highlighted ? higlightedText : normalText,
+    child: Text(
+      name,
+      style: GoogleFonts.getFont(
+        'Roboto',
+        textStyle: drawerButtonText,
+      ),
+      textAlign: TextAlign.center,
+    ),
+    onPressed: function,
+  );
+}
 
+FlatButton drawerButtonVertical(Size size, Function function, String name) {
+  return FlatButton(
+    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    hoverColor: Colors.blue[300],
+    padding: EdgeInsets.symmetric(vertical: 0.0),
+    child: Text(
+      name,
+      style: GoogleFonts.getFont(
+        'Roboto',
+        textStyle: drawerButtonText,
+      ),
+      textAlign: TextAlign.center,
+    ),
+    onPressed: function,
+  );
+}
