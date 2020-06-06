@@ -68,6 +68,7 @@ class HorizontalDrawerMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     if (size.width > 1360) {
       return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           drawerButton(size, () {}, 'COURSES'),
           drawerButton(size, () {}, 'GALLERY'),
