@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mj_college/sizes.dart';
 import 'package:mj_college/styles.dart';
 
@@ -9,10 +8,7 @@ FlatButton appBarButton(Size size, Function function, String name) {
     padding: appBarButtonPadding(size),
     child: Text(
       name,
-      style: GoogleFonts.getFont(
-        'Roboto',
-        textStyle: appbarButtonText.copyWith(fontSize: appBarFontSize),
-      ),
+      style: appbarButtonText.copyWith(fontSize: appBarFontSize),
     ),
     onPressed: function,
   );
@@ -22,10 +18,7 @@ FlatButton appBarButton2(Size size, Function function, String name) {
   return FlatButton(
     child: Text(
       name,
-      style: GoogleFonts.getFont(
-        'Roboto',
-        textStyle: appbarButtonText /*.copyWith(fontSize: appBarFontSize)*/,
-      ),
+      style: appbarButtonText /*.copyWith(fontSize: appBarFontSize)*/,
     ),
     onPressed: function,
   );
@@ -40,10 +33,7 @@ FlatButton drawerButton(Size size, Function function, String name) {
     textColor: highlighted ? higlightedText : normalText,
     child: Text(
       name,
-      style: GoogleFonts.getFont(
-        'Roboto',
-        textStyle: drawerButtonText,
-      ),
+      style: drawerButtonText,
       textAlign: TextAlign.center,
     ),
     onPressed: function,
@@ -57,10 +47,7 @@ FlatButton drawerButtonVertical(Size size, Function function, String name) {
     padding: EdgeInsets.symmetric(vertical: 0.0),
     child: Text(
       name,
-      style: GoogleFonts.getFont(
-        'Roboto',
-        textStyle: drawerButtonText,
-      ),
+      style:  drawerButtonText,
       textAlign: TextAlign.center,
     ),
     onPressed: function,
