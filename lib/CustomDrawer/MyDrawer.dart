@@ -3,7 +3,6 @@ import 'package:mj_college/CustomDrawer/DesktopDrawer.dart';
 import 'package:mj_college/CustomDrawer/MobileDrawer.dart';
 import 'package:mj_college/CustomDrawer/TabletDrawer.dart';
 import 'package:mj_college/colors.dart';
-import 'package:mj_college/functions.dart';
 
 class MyDrawer extends StatelessWidget {
   @override

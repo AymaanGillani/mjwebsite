@@ -66,3 +66,11 @@ FlatButton drawerButtonVertical(Size size, Function function, String name) {
     onPressed: function,
   );
 }
+
+createNavBarElements(List navBarItems, Size size) {
+  var buttons = <FlatButton>[];
+  navBarItems.forEach((item) {
+    buttons.add(appBarButton(size, item[0], item[1]));
+  });
+  return buttons;
+}
