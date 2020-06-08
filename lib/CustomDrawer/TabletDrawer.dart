@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mj_college/functions.dart';
+import 'package:mj_college/lists.dart';
 
 class TabletHorDrawer extends StatelessWidget {
   const TabletHorDrawer({
@@ -12,17 +13,7 @@ class TabletHorDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: [
-        drawerButton(size, () {}, 'COURSES'),
-        drawerButton(size, () {}, 'GALLERY'),
-        drawerButton(size, () {}, 'LIBRARY'),
-        drawerButton(size, () {}, 'STUDENT CORNER'),
-        drawerButton(size, () {}, 'STUDENT RESOURCES'),
-        drawerButton(size, () {}, 'TUITION FEE(Online)'),
-        drawerButton(size, () {}, 'CAREER'),
-        drawerButton(size, () {}, 'EXAM CELL'),
-        drawerButton(size, () {}, 'CONTACT US'),
-      ],
+      children: createDeskTabHorDrawerElements(horDrawerItems, size),
     );
   }
 }

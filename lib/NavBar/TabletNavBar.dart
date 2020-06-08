@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mj_college/colors.dart';
 import 'package:mj_college/functions.dart';
+import 'package:mj_college/lists.dart';
 
 class TabletNavBar extends StatelessWidget {
   @override
@@ -29,27 +30,7 @@ class TabletNavBar extends StatelessWidget {
             width: size.width / (13 / 7),
             child: Wrap(
               direction: Axis.horizontal,
-              children: [
-                appBarButton2(size, () {}, 'ABOUT'),
-                appBarButton2(size, () {}, 'ACADEMICS'),
-                appBarButton2(size, () {}, 'ADMISSIONS'),
-                appBarButton2(size, () {}, 'DEPARTMENTS'),
-                appBarButton2(size, () {}, 'PLACEMENTS'),
-                appBarButton2(size, () {}, 'R & D'),
-                appBarButton2(size, () {}, 'ALUMINI'),
-                ButtonTheme(
-                  minWidth: size.width / 17,
-                  child: FlatButton(
-                    child: Icon(
-                      Icons.search,
-                      size: size.width / 50,
-                      color: appBarTextColor,
-                    ),
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    onPressed: () {},
-                  ),
-                ),
-              ],
+              children: createTabletNavBarElements(navBarItems,size),
             ),
           ),
         ],

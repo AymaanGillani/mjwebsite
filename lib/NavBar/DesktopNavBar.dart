@@ -29,15 +29,8 @@ class DesktopNavBar extends StatelessWidget {
           ),
           Spacer(),
           Row(
-            children: createNavBarElements(navBarItems, size),
+            children: createDesktopNavBarElements(navBarItems, size),
           ),
-          // appBarButton(size, () {}, 'ABOUT'),
-          // appBarButton(size, () {}, 'ACADEMICS'),
-          // appBarButton(size, () {}, 'ADMISSIONS'),
-          // appBarButton(size, () {}, 'DEPARTMENTS'),
-          // appBarButton(size, () {}, 'PLACEMENTS'),
-          // appBarButton(size, () {}, 'R & D'),
-          // appBarButton(size, () {}, 'ALUMINI'),
           ButtonTheme(
             minWidth: size.width / 17,
             child: FlatButton(

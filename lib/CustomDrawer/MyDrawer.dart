@@ -5,6 +5,13 @@ import 'package:mj_college/CustomDrawer/TabletDrawer.dart';
 import 'package:mj_college/colors.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({
+    Key key,
+    @required this.toggleHorMenu,
+    @required this.toggleVertMenu,
+  }) : super(key: key);
+  final Function toggleVertMenu;
+  final Function toggleHorMenu;
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
@@ -19,14 +26,20 @@ class MyDrawer extends StatelessWidget {
           SizedBox(width: 10.0),
           Expanded(
             flex: 19,
-            child: VerticalDrawer(size: size),
+            child: VerticalDrawer(
+              size: size,
+              toggleVertMenu: toggleVertMenu,
+            ),
           ),
           SizedBox(width: 10.0),
           Expanded(
             flex: 80,
             child: SizedBox(
               height: size.height / 5,
-              child: HorizontalDrawerMenu(size: size),
+              child: HorizontalDrawerMenu(
+                size: size,
+                toggleHorMenu: toggleHorMenu,
+              ),
             ),
           )
         ],
@@ -39,14 +52,18 @@ class VerticalDrawer extends StatelessWidget {
   const VerticalDrawer({
     Key key,
     @required this.size,
+    @required this.toggleVertMenu,
   }) : super(key: key);
-
+  final Function toggleVertMenu;
   final Size size;
 
   @override
   Widget build(BuildContext context) {
-    if(size.width>900){return DeskTabVertDrawer(size: size);}
-    else{return MobileVertDrawer();}
+    if (size.width > 900) {
+      return DeskTabVertDrawer(size: size);
+    } else {
+      return MobileVertDrawer(toggleVertMenu: toggleVertMenu);
+    }
   }
 }
 
@@ -54,8 +71,10 @@ class HorizontalDrawerMenu extends StatelessWidget {
   const HorizontalDrawerMenu({
     Key key,
     @required this.size,
+    @required this.toggleHorMenu,
   }) : super(key: key);
 
+  final Function toggleHorMenu;
   final Size size;
 
   @override
@@ -64,8 +83,8 @@ class HorizontalDrawerMenu extends StatelessWidget {
       return DesktopHorDrawer(size: size);
     } else if (size.width < 1360 && size.width > 900) {
       return TabletHorDrawer(size: size);
-    } else{
-      return MobileHorDrawer();
+    } else {
+      return MobileHorDrawer(toggleHorMenu: toggleHorMenu);
     }
   }
 }
