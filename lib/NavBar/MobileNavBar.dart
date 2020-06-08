@@ -60,8 +60,9 @@ class _MobileNavBarState extends State<MobileNavBar>
                       toggleMenuDrawer();
                     });
                   },
-                  child: Icon(
-                    Icons.menu,
+                  child: AnimatedIcon(
+                    icon: AnimatedIcons.menu_close,
+                    progress: animationController,
                     color: appBarTextColor,
                     size: 35.0,
                   ),

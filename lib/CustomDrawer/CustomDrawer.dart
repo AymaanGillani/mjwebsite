@@ -60,7 +60,9 @@ class _CustomDrawerState extends State<CustomDrawer>
     bool mobile = false;
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     Size size = mediaQueryData.size;
-    toggleDrawer();
+    bool expandIcon = false;
+    int _count = 0;
+    if (size.width < 900) mobile = true;
     return AnimatedBuilder(
       animation: animationController,
       builder: (context, _) {
@@ -71,20 +73,26 @@ class _CustomDrawerState extends State<CustomDrawer>
             MyDrawer(
               toggleHorMenu: toggleHorMenu,
               toggleVertMenu: toggleVertMenu,
+              horMenuAnimationController: horMenuAnimationController,
+              vertMenuAnimationController: vertMenuAnimationController,
             ),
             Transform(
               transform: Matrix4.identity()..scale(scalex, scaley),
               alignment: Alignment.bottomRight,
               child: Home(/*toggle: toggleDrawer,*/),
             ),
-            VertDrawerMenu(
-              vertMenuAnimationController: vertMenuAnimationController,
-              size: size,
-            ),
-            HorDrawerMenu(
-              horMenuAnimationController: horMenuAnimationController,
-              size: size,
-            ),
+            mobile
+                ? VertDrawerMenu(
+                    vertMenuAnimationController: vertMenuAnimationController,
+                    size: size,
+                  )
+                : Container(),
+            mobile
+                ? HorDrawerMenu(
+                    horMenuAnimationController: horMenuAnimationController,
+                    size: size,
+                  )
+                : Container(),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
@@ -92,6 +100,9 @@ class _CustomDrawerState extends State<CustomDrawer>
                 child: FloatingActionButton(
                   onPressed: () {
                     toggleDrawer();
+                    setState(() {
+                      expandIcon = !expandIcon;
+                    });
                   },
                   child: Icon(Icons.branding_watermark),
                 ),

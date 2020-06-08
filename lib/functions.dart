@@ -56,6 +56,7 @@ FlatButton drawerButtonVertical(Function function, String name) {
     padding: EdgeInsets.symmetric(vertical: 0.0),
     child: Text(
       name,
+      softWrap: false,
       style: drawerButtonText,
       textAlign: TextAlign.center,
     ),

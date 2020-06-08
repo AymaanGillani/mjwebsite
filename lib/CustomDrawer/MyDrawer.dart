@@ -9,7 +9,11 @@ class MyDrawer extends StatelessWidget {
     Key key,
     @required this.toggleHorMenu,
     @required this.toggleVertMenu,
+    @required this.vertMenuAnimationController,
+    @required this.horMenuAnimationController,
   }) : super(key: key);
+  final AnimationController vertMenuAnimationController;
+  final AnimationController horMenuAnimationController;
   final Function toggleVertMenu;
   final Function toggleHorMenu;
   @override
@@ -29,6 +33,7 @@ class MyDrawer extends StatelessWidget {
             child: VerticalDrawer(
               size: size,
               toggleVertMenu: toggleVertMenu,
+              vertMenuAnimationController: vertMenuAnimationController,
             ),
           ),
           SizedBox(width: 10.0),
@@ -39,6 +44,7 @@ class MyDrawer extends StatelessWidget {
               child: HorizontalDrawerMenu(
                 size: size,
                 toggleHorMenu: toggleHorMenu,
+                horMenuAnimationController: horMenuAnimationController,
               ),
             ),
           )
@@ -53,7 +59,9 @@ class VerticalDrawer extends StatelessWidget {
     Key key,
     @required this.size,
     @required this.toggleVertMenu,
+    @required this.vertMenuAnimationController,
   }) : super(key: key);
+  final AnimationController vertMenuAnimationController;
   final Function toggleVertMenu;
   final Size size;
 
@@ -62,7 +70,10 @@ class VerticalDrawer extends StatelessWidget {
     if (size.width > 900) {
       return DeskTabVertDrawer(size: size);
     } else {
-      return MobileVertDrawer(toggleVertMenu: toggleVertMenu);
+      return MobileVertDrawer(
+        toggleVertMenu: toggleVertMenu,
+        vertMenuAnimationController: vertMenuAnimationController,
+      );
     }
   }
 }
@@ -72,8 +83,9 @@ class HorizontalDrawerMenu extends StatelessWidget {
     Key key,
     @required this.size,
     @required this.toggleHorMenu,
+    @required this.horMenuAnimationController,
   }) : super(key: key);
-
+  final AnimationController horMenuAnimationController;
   final Function toggleHorMenu;
   final Size size;
 
@@ -84,7 +96,10 @@ class HorizontalDrawerMenu extends StatelessWidget {
     } else if (size.width < 1360 && size.width > 900) {
       return TabletHorDrawer(size: size);
     } else {
-      return MobileHorDrawer(toggleHorMenu: toggleHorMenu);
+      return MobileHorDrawer(
+        toggleHorMenu: toggleHorMenu,
+        horMenuAnimationController: horMenuAnimationController,
+      );
     }
   }
 }
