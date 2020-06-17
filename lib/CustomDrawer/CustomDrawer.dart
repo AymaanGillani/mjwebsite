@@ -21,7 +21,7 @@ class _CustomDrawerState extends State<CustomDrawer>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 250),
     );
     horMenuAnimationController = AnimationController(
       vsync: this,
@@ -61,7 +61,6 @@ class _CustomDrawerState extends State<CustomDrawer>
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     Size size = mediaQueryData.size;
     bool expandIcon = false;
-    int _count = 0;
     if (size.width < 900) mobile = true;
     return AnimatedBuilder(
       animation: animationController,

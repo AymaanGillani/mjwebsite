@@ -12,3 +12,13 @@ TextStyle drawerButtonText = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.w900,
 );
+
+TextStyle sideHeadingStyle=TextStyle(
+  fontFamily: 'Roboto',
+  color: Colors.blue,
+  fontWeight: FontWeight.w700,
+);
+
+TextStyle pageTextStyle=TextStyle(
+  color: Colors.black,
+);
