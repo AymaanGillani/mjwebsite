@@ -18,7 +18,7 @@ class _MobileNavBarState extends State<MobileNavBar>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 250),
+      duration: Duration(milliseconds: 500),
     );
   }
 

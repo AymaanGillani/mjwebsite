@@ -140,3 +140,55 @@ createMobileVertDrawerElements(List vertDrawerItems) {
   });
   return buttons;
 }
+
+createNewsAndAnnouncementItems(List listItems, int index) {
+  var items = <Widget>[];
+  items.add(SizedBox(height: 20.0));
+  items.add(SizedBox(
+    height: 70.0,
+    child: Image.asset('testlogo.png'),
+  ));
+  listItems.forEach((element) {
+    items.add(SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Card(
+          color: Colors.blue[100],
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(element),
+          ),
+          elevation: 4.0,
+        ),
+      ),
+    ));
+  });
+  items.add(SizedBox(height: 20.0));
+  return items[index];
+}
+
+createNewsAndAnnouncement(
+    String heading, ScrollController controller, List items) {
+  return Card(
+    child: Column(
+      children: [
+        SizedBox(height: 20.0),
+        Text(
+          heading,
+          style: headingTextStyle,
+        ),
+        SizedBox(height: 20.0),
+        SizedBox(
+          height: 400,
+          child: ListView.separated(
+              controller: controller,
+              itemCount: items.length+3,
+              separatorBuilder: (context, index) => SizedBox(height: 5),
+              itemBuilder: (context, index) {
+                return createNewsAndAnnouncementItems(items, index);
+              }),
+        ),
+      ],
+    ),
+  );
+}

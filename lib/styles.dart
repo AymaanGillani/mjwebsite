@@ -13,12 +13,20 @@ TextStyle drawerButtonText = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
-TextStyle sideHeadingStyle=TextStyle(
+TextStyle sideHeadingStyle = TextStyle(
   fontFamily: 'Roboto',
   color: Colors.blue,
   fontWeight: FontWeight.w700,
+  fontSize: 17,
 );
 
-TextStyle pageTextStyle=TextStyle(
+TextStyle pageTextStyle = TextStyle(
   color: Colors.black,
+);
+
+TextStyle headingTextStyle = TextStyle(
+  fontSize: 25.0,
+  color: Colors.blue,
+  fontWeight: FontWeight.w600,
+  letterSpacing: 0.1,
 );

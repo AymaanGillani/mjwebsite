@@ -1,10 +1,15 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:draggable_scrollbar/draggable_scrollbar.dart';
 import 'package:flutter/material.dart';
 import 'package:mj_college/AlwaysScrollBar.dart';
 import 'package:mj_college/NavBar/NavBar.dart';
 import 'package:mj_college/SideHeadings.dart';
 import 'package:mj_college/Text.dart';
+import 'package:mj_college/functions.dart';
+import 'package:mj_college/headings.dart';
+import 'package:mj_college/lists.dart';
 import 'package:mj_college/styles.dart';
 
 class Home extends StatefulWidget {
@@ -17,67 +22,130 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // _HomeState({this.toggle});
   // final Function toggle;
+  List<Image> myImages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    carouselImages.forEach((element) {
+      myImages.add(Image.network(
+        element,
+        fit: BoxFit.cover,
+      ));
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    myImages.forEach((element) {
+      precacheImage(element.image, context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final ScrollController _myController = new ScrollController();
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     Size size = mediaQueryData.size;
     return Scaffold(
-      body: Scrollbar(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: size.height,
-            child: DraggableScrollbar.rrect(
-              backgroundColor: Colors.blue,
-              heightScrollThumb: 100.0,
-              alwaysVisibleScrollThumb: true,
-              controller: _myController,
-              child: ListView.builder(
-                controller: _myController,
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+      body: SingleChildScrollViewWithScrollbar(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            NavBar(),
+            SizedBox(height: size.height / 100),
+            SizedBox(
+              height: size.height / 1.2,
+              child: Carousel(
+                autoplayDuration: Duration(seconds: 4),
+                images: [
+                  myImages[0],
+                  myImages[1],
+                  myImages[6],
+                  myImages[3],
+                  myImages[4],
+                  myImages[2],
+                  myImages[5]
+                ],
+                dotBgColor: Colors.transparent,
+              ),
+            ),
+            SizedBox(height:30),
+            HomeContent(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomeContent extends StatefulWidget {
+  const HomeContent({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _HomeContentState createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+  ScrollController _myController1 = ScrollController();
+  ScrollController _myController2 = ScrollController();
+  double c1, c2;
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 15), (timer) {
+      c1 = _myController1.position.maxScrollExtent;
+      _myController1.animateTo(c1,
+          duration: Duration(seconds: 15), curve: Curves.linear);
+    });
+    Timer.periodic(Duration(seconds: 15), (timer) {
+      c2 = _myController2.position.maxScrollExtent;
+      _myController2.animateTo(c2,
+          duration: Duration(seconds: 15), curve: Curves.linear);
+    });
+    _myController1.addListener(() {
+      if (_myController1.position.pixels >=
+          _myController1.position.maxScrollExtent - 5) {
+        _myController1.jumpTo(0.0);
+      }
+    });
+    _myController2.addListener(() {
+      if (_myController2.position.pixels >=
+          _myController2.position.maxScrollExtent - 5) {
+        _myController2.jumpTo(0.0);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: createNewsAndAnnouncement(
+                  newsHeading, _myController1, newsAndEventsItems),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      NavBar(),
-                      SizedBox(height: size.height / 100),
-                      SizedBox(
-                        height: size.height / 1.2,
-                        child: Carousel(
-                          autoplayDuration: Duration(seconds: 4),
-                          images: [
-                            Image.asset(
-                              'aa.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'bb.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'gg.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'dd.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'ee.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'cc.png',
-                              fit: BoxFit.cover,
-                            ),
-                            Image.asset(
-                              'ff.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ],
-                          dotBgColor: Colors.transparent,
-                        ),
+                      SizedBox(height: 10.0),
+                      Text(
+                        homeHeading,
+                        style: headingTextStyle.copyWith(fontSize: 20.0),
                       ),
+                      Divider(),
+                      SizedBox(height: 10.0),
                       Text(
                         homePara1,
                         style: pageTextStyle,
@@ -89,23 +157,24 @@ class _HomeState extends State<Home> {
                       Text(
                         homeSide1,
                         style: sideHeadingStyle,
-                        textAlign: TextAlign.start,
+                        textAlign: TextAlign.left,
                       ),
+                      SizedBox(height: 5.0),
                       Text(
                         homePara3,
                         style: pageTextStyle,
                       ),
-                      // FloatingActionButton(onPressed: () {
-                      //   print(size.width);
-                      //   print(size.height);
-                      // }),
                     ],
-                  );
-                },
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
+            Expanded(
+              flex: 1,
+              child: createNewsAndAnnouncement(
+                  announcementHeading, _myController2, annoucementItems),
+            ),
+          ],
       ),
     );
   }

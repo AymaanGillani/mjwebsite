@@ -25,11 +25,11 @@ class _CustomDrawerState extends State<CustomDrawer>
     );
     horMenuAnimationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 250),
+      duration: Duration(milliseconds: 500),
     );
     vertMenuAnimationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 250),
+      duration: Duration(milliseconds: 500),
     );
   }
 
@@ -78,7 +78,7 @@ class _CustomDrawerState extends State<CustomDrawer>
             Transform(
               transform: Matrix4.identity()..scale(scalex, scaley),
               alignment: Alignment.bottomRight,
-              child: Home(/*toggle: toggleDrawer,*/),
+              child: Home(),
             ),
             mobile
                 ? VertDrawerMenu(
